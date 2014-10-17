@@ -33,7 +33,10 @@ STYLES
 	width: 75%;
 	float: right;
 	background: $chat-input-bg;
-	color: $logo-text;
+}
+
+input[type="submit"] {
+  
 }
 
 .main-container {}

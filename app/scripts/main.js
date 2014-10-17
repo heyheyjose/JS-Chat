@@ -4,10 +4,13 @@ var apiUrl = "http://tiny-pizza-server.herokuapp.com/collections/JS-Chat";
 $('input[type=submit]').on('click', function (event) {
   event.preventDefault();
   var fieldValues = $('input.field').serializeArray();
-  var formObject = {};
-  fieldValues.forEach(function (field) {
+  var formObject = {}
+
+   fieldValues.forEach(function (field) {
     formObject[field.name] = field.value;
   });
+
+console.log(formObject);
 
   $.ajax({
     method: 'POST',
@@ -19,7 +22,7 @@ $('input[type=submit]').on('click', function (event) {
 var previousCount = 0;
 
 setInterval(function () {
-  $.ajax({url: apiUrl}).done(function allTheMessages) {
+  $.ajax({url: apiUrl}).done(function (allTheMessages) {
     if(allTheMessages.length > previousCount) {
       previousCount = allTheMessages.length;
 
