@@ -10,19 +10,22 @@ $('input[type=submit]').on('click', function (event) {
     formObject[field.name] = field.value;
   });
 
-console.log(formObject);
+//console.log(formObject);
+  formObject['name'] = ' ';
+  formObject['picture'] = ' ';
+  formObject['date'] = ' ';
 
   $.ajax({
     method: 'POST',
     url: apiUrl,
     data: formObject
-  }).done(function (data) { $('input.field').val('') });
+  }).done(function (data) { $('input.field').val(' ') });
 });
 
 var previousCount = 0;
 
 setInterval(function () {
-  $.ajax({url: apiUrl}).done(function (allTheMessages) {
+  $.ajax( {url: apiUrl} ).done(function (allTheMessages) {
     if(allTheMessages.length > previousCount) {
       previousCount = allTheMessages.length;
 

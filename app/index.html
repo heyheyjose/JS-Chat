@@ -19,9 +19,12 @@
       </div>
       <div class="chat-input">
         <form class="newChat">
+
           <fieldset>
+            <label for="message">Type here: </label>
             <input class="field" type="text" placeholder="Type here." name="message" />
           </fieldset>
+
             <input class="send" type="submit" value="CHAT" />
         </form>
       </div>
@@ -39,13 +42,16 @@
   <!-- this is the chat output template -->
   <script type="text/template" class="chat-output-template">
     <div>
-      <p class="chat-output-name"><%= name %></p>
-      <p class="chat-output-picture"><%= picture %></p>
+
       <p class="chat-output-message"><%= message %></p>
-      <p class="chat-output-date"><%= date %></p>
+
     </div>
   </script>
-
+  <!--
+  <p class="chat-output-name"><%= name %></p>
+  <p class="chat-output-picture"><%= picture %></p>
+  <p class="chat-output-date"><%= date %></p>
+-->
   <!-- this is the user sidebar template -->
   <script type="text/template" class="user-sidebar-template">
     <div>
