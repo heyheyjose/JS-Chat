@@ -7,12 +7,16 @@ COLORS AND FONTS
 -----------------*/
 
 $font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$background-color: blue;
-$text-color: #000000;
+$chat-text: #000000;
+$logo-text: #FFFFFF;
+$footer-text: #FFFFFF;
+
+$logo-bg: #000000;
 $chat-input-bg: #0095D1;
 $user-sidebar-bg: #959595;
-$logo-bg: #000000;
-$logo-text: #FFFFFF;
+$chat-output-bg: #ECF0F1;
+$footer-bg: #000000;
+
 
 /*---------
 STYLES
@@ -25,6 +29,7 @@ STYLES
 
 .logo {
 	width: 25%;
+	height: 100px;
 	float: left;
 	background: $logo-bg;
 	color: $logo-text;
@@ -32,6 +37,7 @@ STYLES
 
 .chat-input {
 	width: 75%;
+	height: 100px;
 	float: right;
 	background: $chat-input-bg;
 }
@@ -51,4 +57,26 @@ input[type="submit"] {
 .chat-output {
 	width: 75%;
 	float: right;
+	background: $chat-output-bg;
 }
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: $footer-bg;
+	color: $footer-text;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
