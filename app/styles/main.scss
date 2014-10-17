@@ -10,6 +10,7 @@ $font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $background-color: blue;
 $text-color: #000000;
 $chat-input-bg: #0095D1;
+$user-sidebar-bg: #959595;
 $logo-bg: #000000;
 $logo-text: #FFFFFF;
 
@@ -41,6 +42,13 @@ input[type="submit"] {
 
 .main-container {}
 
-.user-sidebar {}
+.user-sidebar {
+	width: 25%;
+	float: left;
+	background: $user-sidebar-bg;
+}
 
-.chat-output {}
+.chat-output {
+	width: 75%;
+	float: right;
+}
