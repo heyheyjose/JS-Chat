@@ -2,39 +2,42 @@
 @import '../../bower_components/bourbon/dist/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
-// Custom Styles
-body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
-}
+/*-----------------
+COLORS AND FONTS
+-----------------*/
 
-h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
+$font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$background-color: blue;
+$text-color: #000000;
+$chat-input-bg: #0095D1;
+$logo-bg: #000000;
+$logo-text: #FFFFFF;
+
+/*---------
+STYLES
+---------*/
 
 .chat-container {
-
+	width: 100%;
+	height: 100px;
 }
 
 .logo {
-
+	width: 25%;
+	float: left;
+	background: $logo-bg;
+	color: $logo-text;
 }
 
 .chat-input {
-
+	width: 75%;
+	float: right;
+	background: $chat-input-bg;
+	color: $logo-text;
 }
 
-.main-container {
+.main-container {}
 
-}
+.user-sidebar {}
 
-.user-sidebar {
-
-}
-
-.chat-output {
-  
-}
+.chat-output {}
