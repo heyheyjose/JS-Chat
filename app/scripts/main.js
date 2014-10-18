@@ -1,10 +1,10 @@
 /* grabbing the templates */
-var template = _.template($('.chat-output-template').html());
-var userTemplate = _.template($('.user-sidebar-template').html());
+var chatTemplate = _.template($('.chat-output-template').html());
+var usersTemplate = _.template($('.user-sidebar-template').html());
 
 /* assigning the heroku server API to the apiUrl variable */
-var apiUrl = "http://tiny-pizza-server.herokuapp.com/collections/JS-Chat";
-var formObject = {}; // creating an empty object
+var apiUrl = "http://tiny-pizza-server.herokuapp.com/collections/JS-Chat-New";
+var msgObject = {}; // creating an empty object
 
 var button = document.getElementById('button');
 
@@ -18,64 +18,74 @@ button.onclick = function() {
 };
 
 /* user login*/
-$('.login-form [type=submit]').on('click', function (event) {
+$('.login-form input[type=submit]').on('click', function (event) {
   event.preventDefault();
   var loginValues = $('input.userName').serializeArray();
+  loginValues.forEach(function (userName) {
+    msgObject[userName.name] = userName.value;
+  }); // end of user login
 
-   loginValues.forEach(function (userName) {
-    formObject[userName.name] = userName.value;
+  $('input[type=submit]').on('click', function (event) {
+    event.preventDefault();
+    var fieldValues = $('input.field').serializeArray();
+    fieldValues.forEach(function (field) {
+      msgObject[field.name] = field.value;
+    });
+
+    console.log(msgObject);
+
+    $.ajax({
+      method: 'POST',
+      url: apiUrl,
+      data: msgObject
+    }).done(function (data) {
+      $('input.field').val('')
+    });
   });
-});
-/* end user login*/
 
-$('input[type=submit]').on('click', function (event) {
-  event.preventDefault();
-  var fieldValues = $('input.field').serializeArray();
+  var prevCount = 0;
 
-   fieldValues.forEach(function (field) {
-    formObject[field.name] = field.value;
-  });
+  setInterval(function () {
+    $.ajax( {url: apiUrl} ).done(function (chatMessages) {
+      if(chatMessages.length > prevCount) {
+        console.log(chatMessages);
+        prevCount = chatMessages.length;
 
-//console.log(formObject);
-  formObject.message = 'test';
-  formObject.picture = ' ';
-  formObject.date = ' ';
+        var finishedTemplates = _.map(chatMessages, function (msg) {
+          if (_.isUndefined(msg.message)) {
+            msg.message = ''
+          } if (_.isUndefined(msg.user)) {
+            msg.user = ''
+          } if (_.isUndefined(msg.picture)) {
+            msg.picture = ''
+          } if (_.isUndefined(msg.date)) {
+            msg.date = ''
+          }
+          return chatTemplate(msg);
+        });
 
-  $.ajax({
-    method: 'POST',
-    url: apiUrl,
-    data: formObject
-  }).done(function (data) {
-    $('input.field').val('');
-  });
-});
+        $('.chat-output').html(finishedTemplates);
+      }
+    })
 
-var previousCount = 0;
-
-setInterval(function () {
-  $.ajax( {url: apiUrl} ).done(function (chatMessages) {
-    if(chatMessages.length > previousCount) {
-      previousCount = chatMessages.length;
-
-      var finishedTemplates = _.map(chatMessages, function (message) {
-        return template(message);
-      });
-
-      $('.chat-output').html(finishedTemplates);
-    }
-  });
-}, 1000);
-
-setInterval(function () {
-  $.ajax( {url: apiUrl} ).done(function (chatUsers) {
-    if(chatUsers.length > previousCount) {
-      previousCount = chatUsers.length;
-
+    $.ajax( {url: apiUrl} ).done(function (chatUsers) {
       var userTemplateFinished = _.map(chatUsers, function (person) {
-        return userTemplate(person);
+        if (_.isUndefined(person.user)) {
+          person.user = ''
+        }
+        return usersTemplate(person);
       });
 
       $('.user-sidebar').html(userTemplateFinished);
-    }
-  });
-}, 1000);
+    });
+  }, 1000);
+});
+
+
+
+
+
+
+
+
+
