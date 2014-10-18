@@ -39,7 +39,7 @@ $('.login-form input[type=submit]').on('click', function (event) {
       url: apiUrl,
       data: msgObject
     }).done(function (data) {
-      $('input.field').val('')
+      $('input.field').val('');
     });
   });
 
@@ -53,25 +53,25 @@ $('.login-form input[type=submit]').on('click', function (event) {
 
         var finishedTemplates = _.map(chatMessages, function (msg) {
           if (_.isUndefined(msg.message)) {
-            msg.message = ''
+            msg.message = '';
           } if (_.isUndefined(msg.user)) {
-            msg.user = ''
+            msg.user = '';
           } if (_.isUndefined(msg.picture)) {
-            msg.picture = ''
+            msg.picture = '';
           } if (_.isUndefined(msg.date)) {
-            msg.date = ''
+            msg.date = '';
           }
           return chatTemplate(msg);
         });
 
         $('.chat-output').html(finishedTemplates);
       }
-    })
+    });
 
     $.ajax( {url: apiUrl} ).done(function (chatUsers) {
       var userTemplateFinished = _.map(chatUsers, function (person) {
         if (_.isUndefined(person.user)) {
-          person.user = ''
+          person.user = '';
         }
         return usersTemplate(person);
       });
@@ -80,12 +80,3 @@ $('.login-form input[type=submit]').on('click', function (event) {
     });
   }, 1000);
 });
-
-
-
-
-
-
-
-
-
