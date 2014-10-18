@@ -37,7 +37,7 @@ $('input[type=submit]').on('click', function (event) {
   });
 
 //console.log(formObject);
-
+  formObject.message = 'test';
   formObject.picture = ' ';
   formObject.date = ' ';
 
@@ -79,14 +79,3 @@ setInterval(function () {
     }
   });
 }, 1000);
-
-
-
-
-
-
-
-
-
-
-

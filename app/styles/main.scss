@@ -14,7 +14,7 @@ $footer-text: #FFFFFF;
 $logo-bg: #000000;
 $chat-input-bg: #0095D1;
 $user-sidebar-bg: #959595;
-$chat-output-bg: #ECF0F1;
+$chat-output-bg: #FFFFFF;
 $footer-bg: #000000;
 
 @mixin border-radius ($radius) {
@@ -38,11 +38,18 @@ STYLES
 .login-form {
 	padding-top: 20%;
 	text-align: center;
+	color: #959595;
 }
 
 .chat-container {
 	width: 100%;
 	height: 100px;
+}
+
+img {
+	width: 25%;
+	height: auto;
+	margin-left: 125px;
 }
 
 .logo {
@@ -117,5 +124,6 @@ footer {
 	bottom: 0;
 	width: 100%;
 	background: $footer-bg;
+	text-align: center;
 	color: $footer-text;
 }
