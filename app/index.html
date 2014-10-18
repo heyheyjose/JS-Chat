@@ -27,11 +27,11 @@
 
     <div class="chat-container">
       <div class="logo">
-        <h1>some logo</h1>
+        <h1>JSchat</h1>
       </div>
       <div class="chat-input">
         <form class="newChat">
-            <label for="message">Tell us what you have to say: </label>
+            <label for="message"><strong>Tell us what you have to say: </strong></label>
             <input class="field" type="text" placeholder="Type here." name="message" />
             <input class="send" type="submit" value="CHAT" />
         </form>
@@ -51,13 +51,13 @@
 
   <!-- this is the chat output template -->
   <script type="text/template" class="chat-output-template">
-    <div>
+    <div class="output-area">
       <p class="chat-output-name"><%= name %></p>
       <p class="chat-output-message"><%= message %></p>
     </div>
   </script>
   <!--
-  
+
   <p class="chat-output-picture"><%= picture %></p>
   <p class="chat-output-date"><%= date %></p>
 -->
