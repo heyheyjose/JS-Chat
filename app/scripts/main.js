@@ -37,6 +37,7 @@ $('input[type=submit]').on('click', function (event) {
   });
 
 //console.log(formObject);
+
   formObject.picture = ' ';
   formObject.date = ' ';
 
@@ -44,7 +45,9 @@ $('input[type=submit]').on('click', function (event) {
     method: 'POST',
     url: apiUrl,
     data: formObject
-  }).done(function (data) { $('input.field').val(' '); });
+  }).done(function (data) {
+    $('input.field').val('');
+  });
 });
 
 var previousCount = 0;
@@ -69,16 +72,13 @@ setInterval(function () {
       previousCount = chatUsers.length;
 
       var userTemplateFinished = _.map(chatUsers, function (person) {
-        return template(person);
+        return userTemplate(person);
       });
 
       $('.user-sidebar').html(userTemplateFinished);
     }
   });
 }, 1000);
-
-
-
 
 
 
