@@ -17,10 +17,28 @@ $user-sidebar-bg: #959595;
 $chat-output-bg: #ECF0F1;
 $footer-bg: #000000;
 
-
+@mixin border-radius ($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+   border-radius: $radius;
+}
 /*---------
 STYLES
 ---------*/
+#login-wrapper {
+	background-color: rgba(0,0,0, 0.9);
+	height: 100%;
+	margin-left: 0;
+	margin-top: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}
+
+.login-form {
+	padding-top: 20%;
+	text-align: center;
+}
 
 .chat-container {
 	width: 100%;
@@ -41,21 +59,41 @@ STYLES
 	float: right;
 	background: $chat-input-bg;
 }
-
-input[type="submit"] {
-  
+.newChat {
+	float: left;
+	margin: 20px;
 }
 
-.main-container {}
+input[type="submit"] {
+
+}
+
+.send {
+	background: navy;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
+	margin-left: 10px;
+  color: #fff;
+  width: 75px;
+	height: 40px;
+	border: 1px solid navy;
+  @include border-radius (15px);
+}
+
+.main-container {
+
+}
 
 .user-sidebar {
 	width: 25%;
+	height: 700px;
 	float: left;
 	background: $user-sidebar-bg;
 }
 
 .chat-output {
 	width: 75%;
+	height: 700px;
 	float: right;
 	background: $chat-output-bg;
 }
@@ -67,16 +105,3 @@ footer {
 	background: $footer-bg;
 	color: $footer-text;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
