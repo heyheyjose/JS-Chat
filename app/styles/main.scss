@@ -114,6 +114,7 @@ input[type="submit"] {
 	height: 700px;
 	float: left;
 	padding-left: 10px;
+	overflow: auto;
 	background: $user-sidebar-bg;
 }
 
