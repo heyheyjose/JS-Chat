@@ -21,8 +21,11 @@ button.onclick = function() {
 $('.login-form input[type=submit]').on('click', function (event) {
   event.preventDefault();
   var loginValues = $('input.userName').serializeArray();
-  loginValues.forEach(function (userName) {
+                    $('input.userPicture').serializeArray();
+  loginValues.forEach(function (userName, userPicture) {
     msgObject[userName.name] = userName.value;
+    msgObject[userPicture.name] = userPicture.value;
+
   }); // end of user login
 
   $('input[type=submit]').on('click', function (event) {
