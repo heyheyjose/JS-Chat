@@ -65,6 +65,7 @@ img {
 hr {
   border: 0;
   height: 0;
+	width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -125,6 +126,15 @@ input[type="submit"] {
 	padding-left: 15px;
 	overflow: auto;
 	background: $chat-output-bg;
+}
+
+.chat-output-date {
+	float: right;
+	margin-top: -70px;
+	margin-right: 15px;
+	font-family: $font-main;
+	font-size: 14px;
+	color: #A7A6B5;
 }
 
 footer {

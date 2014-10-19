@@ -27,6 +27,10 @@ $('.login-form input[type=submit]').on('click', function (event) {
 
   $('input[type=submit]').on('click', function (event) {
     event.preventDefault();
+
+    var date = new Date ();
+    msgObject['date'] = date;
+
     var fieldValues = $('input.field').serializeArray();
     fieldValues.forEach(function (field) {
       msgObject[field.name] = field.value;
