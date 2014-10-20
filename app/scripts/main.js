@@ -74,7 +74,19 @@ $('.login-form input[type=submit]').on('click', function (event) {
         $('.chat-output').html(finishedTemplates);
       }
     });
+/*
+    var addUserLeaderboard = function () {
+      var namesAndCount = _.countBy(chatData, function (msg) {
+        return msg.name;
+      });
+      var userMessageCount = _.map(namesAndCount, function (val, key) {
+        return { name: key, length: val };
+      });
+      var compiledUserMessageCount = _.map(userMessageCount, userMessageCountTemplate);
 
+      $('.leaderboard').html(compiledUserMessageCount);
+    };
+*/
     $.ajax( {url: apiUrl} ).done(function (chatUsers) {
       var userTemplateFinished = _.map(chatUsers, function (person) {
         if (_.isUndefined(person.user)) {
