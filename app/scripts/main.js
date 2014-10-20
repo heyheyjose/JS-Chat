@@ -1,6 +1,6 @@
 /* grabbing the templates */
 var chatTemplate = _.template($('.chat-output-template').html());
-var usersTemplate = _.template($('.user-sidebar-template').html());
+var userCountTemplate = _.template($('.user-sidebar-template').html());
 
 /* assigning the heroku server API to the apiUrl variable */
 var apiUrl = "http://tiny-pizza-server.herokuapp.com/collections/JS-Chat-New";
@@ -87,6 +87,31 @@ $('.login-form input[type=submit]').on('click', function (event) {
       $('.leaderboard').html(compiledUserMessageCount);
     };
 */
+    /*-------------------------- displays users one time ------------------*/
+
+    $.ajax( {url: apiUrl} ).done(function (chatUsers) {
+      var userCount = _.countBy(chatUsers, function (msg) {
+        return msg.user;
+      });
+      var userMessages = _.map(userCount, function (val, key) {
+        return { user: key, message: val };
+      });
+
+      var compiledUserTemplateFinished = _.map(userMessages, userCountTemplate);
+
+      $('.user-sidebar').html(compiledUserTemplateFinished);
+    });
+
+    /*-------------------------- END displays users one time ------------------*/
+
+    /*-------------------------- counter part ------------------*/
+
+    $.ajax({ url: apiUrl }).done(function (msgNum) {
+      $(".msgCount").text(msgNum.length);
+    });
+
+    /*-------------------------- END counter part ------------------*/
+/*
     $.ajax( {url: apiUrl} ).done(function (chatUsers) {
       var userTemplateFinished = _.map(chatUsers, function (person) {
         if (_.isUndefined(person.user)) {
@@ -97,5 +122,6 @@ $('.login-form input[type=submit]').on('click', function (event) {
 
       $('.user-sidebar').html(userTemplateFinished);
     });
+*/
   }, 1000);
 });
