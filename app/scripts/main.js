@@ -53,13 +53,13 @@ $('.login-form input[type=submit]').on('click', function (event) {
   var prevCount = 0;
 
   setInterval(function () {
-    $.ajax( {url: apiUrl} ).done(function (chatMessages) {
+    $.ajax( {url: apiUrl} ).done(function (chatMessages, chatUsers) {
       if(chatMessages.length > prevCount) {
         console.log(chatMessages);
         prevCount = chatMessages.length;
 
         var finishedTemplates = _.map(chatMessages, function (msg) {
-          if (_.isUndefined(msg.message)) {
+          if (_.isUndefined(msg.message)) { // this part is for the empty
             msg.message = '';
           } if (_.isUndefined(msg.user)) {
             msg.user = '';
@@ -104,13 +104,13 @@ $('.login-form input[type=submit]').on('click', function (event) {
 
     /*-------------------------- END displays users one time ------------------*/
 
-    /*-------------------------- counter part ------------------*/
+    /*-------------------------- counter part ------------------
 
     $.ajax({ url: apiUrl }).done(function (msgNum) {
       $(".msgCount").text(msgNum.length);
     });
 
-    /*-------------------------- END counter part ------------------*/
+    -------------------------- END counter part ------------------*/
 /*
     $.ajax( {url: apiUrl} ).done(function (chatUsers) {
       var userTemplateFinished = _.map(chatUsers, function (person) {
