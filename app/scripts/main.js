@@ -1,0 +1,127 @@
+/* grabbing the templates */
+var chatTemplate = _.template($('.chat-output-template').html());
+var userCountTemplate = _.template($('.user-sidebar-template').html());
+
+/* assigning the heroku server API to the apiUrl variable */
+var apiUrl = "http://tiny-pizza-server.herokuapp.com/collections/JS-Chat-New";
+var msgObject = {}; // creating an empty object
+
+var button = document.getElementById('button');
+
+button.onclick = function() {
+  var div = document.getElementById('login-wrapper');
+  if (div.style.display !== 'none') {
+    div.style.display = 'none';
+  } else {
+    div.style.display = 'block';
+  }
+};
+
+/* user login*/
+$('.login-form input[type=submit]').on('click', function (event) {
+  event.preventDefault();
+  var loginValues = $('input.userName').serializeArray();
+                    $('input.userPicture').serializeArray();
+  loginValues.forEach(function (userName, userPicture) {
+    msgObject[userName.name] = userName.value;
+    msgObject[userPicture.name] = userPicture.value;
+
+  }); // end of user login
+
+  $('input[type=submit]').on('click', function (event) {
+    event.preventDefault();
+
+    var date = new Date ();
+    msgObject['date'] = date;
+
+    var fieldValues = $('input.field').serializeArray();
+    fieldValues.forEach(function (field) {
+      msgObject[field.name] = field.value;
+    });
+
+    console.log(msgObject);
+
+    $.ajax({
+      method: 'POST',
+      url: apiUrl,
+      data: msgObject
+    }).done(function (data) {
+      $('input.field').val('');
+    });
+  });
+
+  var prevCount = 0;
+
+  setInterval(function () {
+    $.ajax( {url: apiUrl} ).done(function (chatMessages) {
+      if(chatMessages.length > prevCount) {
+        console.log(chatMessages);
+        prevCount = chatMessages.length;
+
+        var finishedTemplates = _.map(chatMessages, function (msg) {
+          if (_.isUndefined(msg.message)) {
+            msg.message = '';
+          } if (_.isUndefined(msg.user)) {
+            msg.user = '';
+          } if (_.isUndefined(msg.picture)) {
+            msg.picture = '';
+          } if (_.isUndefined(msg.date)) {
+            msg.date = '';
+          }
+          return chatTemplate(msg);
+        });
+
+        $('.chat-output').html(finishedTemplates);
+      }
+    });
+/*
+    var addUserLeaderboard = function () {
+      var namesAndCount = _.countBy(chatData, function (msg) {
+        return msg.name;
+      });
+      var userMessageCount = _.map(namesAndCount, function (val, key) {
+        return { name: key, length: val };
+      });
+      var compiledUserMessageCount = _.map(userMessageCount, userMessageCountTemplate);
+
+      $('.leaderboard').html(compiledUserMessageCount);
+    };
+*/
+    /*-------------------------- displays users one time ------------------*/
+
+    $.ajax( {url: apiUrl} ).done(function (chatUsers) {
+      var userCount = _.countBy(chatUsers, function (msg) {
+        return msg.user;
+      });
+      var userMessages = _.map(userCount, function (val, key) {
+        return { user: key, message: val };
+      });
+
+      var compiledUserTemplateFinished = _.map(userMessages, userCountTemplate);
+
+      $('.user-sidebar').html(compiledUserTemplateFinished);
+    });
+
+    /*-------------------------- END displays users one time ------------------*/
+
+    /*-------------------------- counter part ------------------*/
+
+    $.ajax({ url: apiUrl }).done(function (msgNum) {
+      $(".msgCount").text(msgNum.length);
+    });
+
+    /*-------------------------- END counter part ------------------*/
+/*
+    $.ajax( {url: apiUrl} ).done(function (chatUsers) {
+      var userTemplateFinished = _.map(chatUsers, function (person) {
+        if (_.isUndefined(person.user)) {
+          person.user = '';
+        }
+        return usersTemplate(person);
+      });
+
+      $('.user-sidebar').html(userTemplateFinished);
+    });
+*/
+  }, 1000);
+});

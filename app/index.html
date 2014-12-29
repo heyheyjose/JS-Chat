@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>JS Chat</title>
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+
+    <!-- Enter user name here-->
+
+    <div id="login-wrapper">
+      <div class="login-form">
+        <p>Please enter your login information.</p>
+        <input class="userName" type="text" placeholder="Create a user name." name="user" />
+        <input class="userPicture" type="text" placeholder="Where can I find your picture?" name="picture" />
+        <input class="send" id="button" type="submit" value="ENTER" />
+      </div>
+    </div>
+
+    <!--end user name entry-->
+
+    <div class="chat-container">
+      <div class="logo"><img src="../images/logoblue-black.png" />
+      </div>
+      <div class="chat-input">
+        <form class="newChat">
+            <label for="message"><strong>Tell us what you have to say: </strong></label>
+            <input class="field" type="text" placeholder="Type here." name="message" />
+            <input class="send" type="submit" value="CHAT" />
+        </form>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="user-sidebar">
+        <h3>Users listed below:</h3>
+      </div>
+      <div class="chat-output"></div>
+    </div>
+
+  <footer>
+    <p>&copy;2014 TeamJS</p>
+  </footer>
+
+  <!-- this is the chat output template -->
+  <script type="text/template" class="chat-output-template">
+    <div class="output-area">
+      <p class="chat-output-picture"><img src="../images/no-photo.jpg"/></p>
+ <!-- <p class="chat-output-picture"><img src="<%= picture %>"/></p>-->
+      <p class="chat-output-user"><%= user %></p>
+      <p class="chat-output-message"><%= message %></p>
+      <p class="chat-output-date"><%= date %></p>
+      <hr />
+    </div>
+  </script>
+
+  <!-- this is the user sidebar template -->
+  <script type="text/template" class="user-sidebar-template">
+    <div>
+      <p class="sidebar-user"><%= user %></p>
+      <hr />
+    </div>
+  </script>
+
+  <!-- <p class="sidebar-picture"><%= picture %></p> -->
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../bower_components/underscore/underscore.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

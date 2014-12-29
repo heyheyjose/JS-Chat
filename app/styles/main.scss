@@ -1,0 +1,160 @@
+ // Bourbon & Neat
+@import '../../bower_components/bourbon/dist/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
+
+/*-----------------
+COLORS AND FONTS
+-----------------*/
+
+$font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$chat-text: #000000;
+$logo-text: #FFFFFF;
+$footer-text: #FFFFFF;
+
+$logo-bg: #000000;
+$chat-input-bg: #0095D1;
+$user-sidebar-bg: #959595;
+$chat-output-bg: #FFFFFF;
+$footer-bg: #000000;
+
+@mixin border-radius ($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+   border-radius: $radius;
+}
+/*---------
+STYLES
+---------*/
+#login-wrapper {
+	background-color: rgba(0,0,0, 0.9);
+	height: 100%;
+	margin-left: 0;
+	margin-top: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}
+
+.login-form {
+	padding-top: 20%;
+	text-align: center;
+	color: #959595;
+}
+
+.chat-container {
+	width: 100%;
+	height: 100px;
+}
+
+img {
+	width: 25%;
+	height: auto;
+	margin-left: 125px;
+}
+
+.logo {
+	width: 25%;
+	height: 100px;
+	float: left;
+	padding-left: 20px;
+	background: $logo-bg;
+	font-size: 1.5em;
+	color: $logo-text;
+}
+
+hr {
+  border: 0;
+  height: 0;
+	width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.chat-input {
+	width: 75%;
+	height: 100px;
+	float: right;
+	background: $chat-input-bg;
+}
+
+input[type="text"] {
+	width: 700px;
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+
+.login-form input[type="text"] {
+	width: 300px;
+	margin-left: 25px;
+}
+
+.newChat {
+	float: left;
+	margin: 20px;
+}
+
+.send {
+	background: navy;
+  	font-family: 'Roboto Condensed', sans-serif;
+  	font-size: 1em;
+	margin-left: 10px;
+  	color: #fff;
+  	width: 75px;
+	height: 40px;
+	border: 1px solid navy;
+  @include border-radius (15px);
+}
+
+.user-sidebar {
+	width: 25%;
+	height: 700px;
+	float: left;
+	padding-left: 10px;
+	overflow: auto;
+	background: $user-sidebar-bg;
+}
+
+.chat-output-user {
+	font-weight: bold;
+}
+
+.chat-output-picture {
+	float: left;
+	img {
+    border-radius: 6px;
+    height: 50px;
+		width: 50px;
+		margin-left: 0;
+		margin-top: -15px;
+		margin-right: 15px;
+  }
+}
+
+.chat-output {
+	width: 75%;
+	height: 700px;
+	float: right;
+	padding-left: 15px;
+	overflow: auto;
+	background: $chat-output-bg;
+}
+
+.chat-output-date {
+	float: right;
+	margin-top: -70px;
+	margin-right: 15px;
+	font-family: $font-main;
+	font-size: 14px;
+	color: #A7A6B5;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: $footer-bg;
+	text-align: center;
+	color: $footer-text;
+}
