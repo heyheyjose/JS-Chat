@@ -1,3 +1,3 @@
-## Yo, I'm a Readme
+## JS Chat
 
-You should probably update me so people looking at your code have an idea what it is being used for :)
+A chat room application using JavaScript, Underscore, jQuery, HTML and Sass.
