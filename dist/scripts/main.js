@@ -9,7 +9,7 @@ var msgObject = {}; // creating an empty object
 var button = document.getElementById('button');
 
 button.onclick = function() {
-  var div = document.getElementById('login-modal');
+  var div = document.getElementById('login-wrapper');
   if (div.style.display !== 'none') {
     div.style.display = 'none';
   } else {
@@ -18,7 +18,7 @@ button.onclick = function() {
 };
 
 /* user login*/
-$('.login-form-text input[type=submit]').on('click', function (event) {
+$('.login-form input[type=submit]').on('click', function (event) {
   event.preventDefault();
   var loginValues = $('input.userName').serializeArray();
                     $('input.userPicture').serializeArray();

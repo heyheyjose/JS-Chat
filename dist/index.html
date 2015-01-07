@@ -7,17 +7,15 @@
     <title>JS Chat</title>
     <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
 
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
     <script src="../bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
 
-    <!--begin user name entry-->
+    <!-- Enter user name here-->
 
-    <div id="login-modal">
-      <div class="login-form-text">
+    <div id="login-wrapper">
+      <div class="login-form">
         <p>Please enter your login information.</p>
         <input class="userName" type="text" placeholder="Create a user name." name="user" />
         <input class="userPicture" type="text" placeholder="Where can I find your picture?" name="picture" />
@@ -72,15 +70,8 @@
 
   <!-- <p class="sidebar-picture"><%= picture %></p> -->
 
-  <!-- build:js scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="../bower_components/jquery/dist/jquery.js"></script>
-  <script src="../bower_components/underscore/underscore.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+  <script src="scripts/vendor.js"></script>
 
-  <!-- build:js scripts/main.js -->
   <script src="scripts/main.js"></script>
-  <!-- endbuild -->
 </body>
 </html>
